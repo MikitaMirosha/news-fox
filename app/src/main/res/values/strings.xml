@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Poifox</string>
+    <string name="login_page">LOGIN</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="initial_activity">INITIAL ACTIVITY</string>
+    <string name="login">login</string>
+    <string name="signup">SIGN UP</string>
+</resources>
