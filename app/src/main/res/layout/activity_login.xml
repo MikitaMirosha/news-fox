@@ -54,7 +54,6 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/TextView.LogIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login" />
@@ -67,7 +66,6 @@
 
             <TextView
                 android:id="@+id/vTvSignUp"
-                style="@style/TextView.SignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"

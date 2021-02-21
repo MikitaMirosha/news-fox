@@ -27,8 +27,8 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener {
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {
 
-        vEtUsername = findViewById<View>(R.id.vEtUsername) as EditText
-        vEtPassword = findViewById<View>(R.id.vEtPassword) as EditText
+        vEtUsername = findViewById<View>(R.id.vEtUsernameSignup) as EditText
+        vEtPassword = findViewById<View>(R.id.vEtPasswordSignup) as EditText
         vBtnSignup = findViewById<View>(R.id.vBtnSignup) as Button
         vTvResult = findViewById<View>(R.id.resultText) as TextView
         mRealm = Realm.getDefaultInstance()
