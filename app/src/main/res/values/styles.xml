@@ -40,8 +40,7 @@
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ptsans</item>
     </style>
-
-    <style name="TextView.Login">
+  
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorOrange</item>
@@ -56,7 +55,6 @@
         <item name="android:layout_marginStart">@dimen/dp_6</item>
     </style>
 
-    <style name="TextView.Signup">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorWhite</item>

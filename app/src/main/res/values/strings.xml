@@ -4,8 +4,6 @@
     <string name="username">username</string>
     <string name="password">password</string>
 
-    <string name="hello">Hello</string>
-
     <string name="poifox">POIfox</string>
     <string name="description">Find the best places in town</string>
     <string name="login">Log in </string>
