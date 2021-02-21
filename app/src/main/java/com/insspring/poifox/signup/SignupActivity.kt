@@ -53,9 +53,9 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener {
 
     fun writeToDataBase(username: String?, password: String?) {
         mRealm?.executeTransactionAsync({ bgRealm ->
-            val user: Register = bgRealm.createObject()
-            user.username = username
-            user.password = password
+            val register: Register = bgRealm.createObject()
+            register.username = username
+            register.password = password
         }, {
             Toast.makeText(this@SignupActivity, "Success", Toast.LENGTH_SHORT).show()
             showResults()
@@ -70,8 +70,8 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener {
     }
 
     private fun showResults() {
-        val userList: RealmResults<Register> = mRealm?.where<Register>()!!.findAll()
-        vTvResult?.text = userList.toString()
+        val registerList: RealmResults<Register> = mRealm?.where<Register>()!!.findAll()
+        vTvResult?.text = registerList.toString()
     }
 }
 
