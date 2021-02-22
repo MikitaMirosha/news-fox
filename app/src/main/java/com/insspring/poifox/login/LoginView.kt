@@ -9,5 +9,4 @@ interface LoginView : BaseMvpView {
     fun updateSignupButton()
     fun initRealm()
     fun openSignupActivity()
-    //fun openInitialActivity()
 }

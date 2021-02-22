@@ -9,6 +9,7 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
     init {
         viewState.updateImages()
         viewState.updateEditText()
+
         viewState.initOnLoginButton()
         viewState.updateSignupButton()
         viewState.initRealm()
@@ -18,8 +19,6 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
         viewState.openSignupActivity()
     }
 
-//    fun onLoginClicked() {
-//        viewState.openInitialActivity()
-//    }
+
 
 }
