@@ -1,58 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context=".SignupActivity">
+    android:background="@color/colorBg"
+    tools:context=".login.LoginActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="SIGN UP"
-        android:textColor="#090808"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="top"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/vEtUsername"
-        android:layout_width="350dp"
+        <TextView
+            android:id="@+id/vTvTitleNameSignUp"
+            style="@style/TextView.TitleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_16"
+            android:text="@string/poifox" />
+
+        <TextView
+            style="@style/TextView.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:text="@string/description" />
+
+        <View style="@style/Divider" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:drawableLeft="@drawable/ic_user"
-        android:gravity="center"
-        android:hint="@string/username"
-        android:textColor="#090808"
-        android:textStyle="bold" />
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/vEtPassword"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:drawableLeft="@drawable/ic_password"
-        android:gravity="center"
-        android:hint="@string/password"
-        android:textColor="#090808"
-        android:textStyle="bold" />
+        <LinearLayout
+            android:id="@+id/vLlLogInOrSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/vBtnSignup"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/signup"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/vTvLogIn"
+                style="@style/TextView.Signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick"
+                android:text="@string/login" />
 
+            <TextView
+                style="@style/TextView.Or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or" />
+
+            <TextView
+                android:id="@+id/vTvSignUp"
+                style="@style/TextView.Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:text="@string/signup" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/vEtUsernameSignup"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_envelope"
+            android:hint="@string/username" />
+
+        <EditText
+            android:id="@+id/vEtPasswordSignup"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/password" />
+
+        <EditText
+            android:id="@+id/vEtConfirmPassword"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/confirm_password" />
+
+        <FrameLayout
+            android:id="@+id/vFlSignup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:background="@drawable/bg_rec_rounded_12"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onClick">
+
+            <TextView
+                style="@style/TextView.SignupButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/signup" />
+
+        </FrameLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/resultText"
@@ -60,4 +126,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp" />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
