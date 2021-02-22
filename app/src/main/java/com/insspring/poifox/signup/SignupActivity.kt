@@ -34,8 +34,6 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
 
     private var mRealm: Realm? = null
 
-    override fun onCreateActivity(savedInstanceState: Bundle?) {
-        initListeners()
     }
 
     override fun onClick(view: View) {
@@ -78,9 +76,6 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
         mRealm?.close()
     }
 
-    override fun openLoginActivity() {
-        val intent = Intent(this@SignupActivity, LoginActivity::class.java)
-        startActivity(intent)
     }
 
     override fun initRealm() {
