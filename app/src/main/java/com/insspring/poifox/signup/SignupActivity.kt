@@ -6,85 +6,42 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R
-import com.insspring.poifox.initial.InitialActivity
 import com.insspring.poifox.login.LoginActivity
-import com.insspring.poifox.model.Register
-import io.realm.Realm
-import io.realm.kotlin.createObject
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
 
 
-class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
+class SignupActivity : BaseMvpActivity(), SignupView {
 
     @InjectPresenter
     lateinit var signupPresenter: SignupPresenter
 
     override fun getLayoutId(): Int = R.layout.activity_signup
 
-    private var vEtUsernameSignup: EditText? = null
-    private var vEtPasswordSignup: EditText? = null
-
-    private var mRealm: Realm? = null
-
-    }
-
-    override fun onClick(view: View) {
-        if (vEtPasswordSignup?.text.toString().trim { it <= ' ' }.isEmpty()) {
-            vEtPasswordSignup?.error = "enter password"
-            vEtPasswordSignup?.requestFocus()
-        }
-        if (vEtUsernameSignup?.text.toString().trim { it <= ' ' }.isEmpty()) {
-            vEtUsernameSignup?.error = "enter username"
-            vEtUsernameSignup?.requestFocus()
-        } else {
-            writeToDataBase(
-                vEtUsernameSignup?.text.toString().trim { it <= ' ' },
-                vEtPasswordSignup?.text.toString().trim { it <= ' ' })
-        }
+    override fun onCreateActivity(savedInstanceState: Bundle?) {
+        initListeners()
     }
 
     private fun initListeners() {
         vTvLogIn.setOnClickListener {
             signupPresenter.onLoginClicked()
-            finish()
         }
 
-    }
-
-    private fun writeToDataBase(username: String?, password: String?) {
-        mRealm?.executeTransactionAsync({ bgRealm ->
-            val register: Register = bgRealm.createObject()
-            register.username = username
-            register.password = password
-        }, {
-            Toast.makeText(this@SignupActivity, "success", Toast.LENGTH_SHORT).show()
-        }) { error ->
-            Toast.makeText(this@SignupActivity, "wrong data", Toast.LENGTH_SHORT).show()
+        vFlSignup.setOnClickListener {
+            signupPresenter.onSignupClicked(
+                vEtUsernameSignup.text.toString(),
+                vEtPasswordSignup.text.toString(),
+                vEtConfirmPassword.text.toString()
+            )
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mRealm?.close()
-    }
-
-    }
-
-    override fun initRealm() {
-        mRealm = Realm.getDefaultInstance()
-    }
-
-    override fun updateEditText() {
-        vEtUsernameSignup = findViewById(R.id.vEtUsernameSignup)
-        vEtPasswordSignup = findViewById(R.id.vEtPasswordSignup)
+    override fun openLoginActivity() {
+        val intent = Intent(this@SignupActivity, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     override fun updateTitleName() {
@@ -104,6 +61,19 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
         vTvTitleNameSignUp.text = spannable
     }
 
+    override fun showInvalidUsername() {
+        vEtUsernameLogin?.error = "enter username"
+        vEtUsernameLogin?.requestFocus()
+    }
+
+    override fun showEditTextPasswordHint() {
+        vEtPasswordLogin?.error = "enter password"
+        vEtPasswordLogin?.requestFocus()
+    }
+
+    override fun showEditTextInvalidConfirmationHint() {
+        vEtConfirmPassword?.error = "invalid confirmation"
+        vEtConfirmPassword?.requestFocus()
+    }
+
 }
-
-
