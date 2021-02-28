@@ -7,10 +7,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Toast
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.delivery.ui.base.BaseMvpActivity
-import com.insspring.poifox.R
+
 import com.insspring.poifox.login.LoginActivity
 import com.insspring.poifox.model.Register
 import io.realm.Realm
@@ -26,23 +23,11 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
 
     override fun getLayoutId(): Int = R.layout.activity_signup
 
-    private var mRealm: Realm? = null
-
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         initListeners()
     }
 
     override fun onClick(view: View) {
-
-        val register: Register? = mRealm?.where(Register::class.java)
-            ?.equalTo("username", vEtUsernameSignup?.text.toString())
-            ?.equalTo("password", vEtPasswordSignup?.text.toString())
-            ?.findFirst()
-
-        if (register != null) {
-            vEtConfirmPassword?.error = "invalid data"
-            vEtConfirmPassword?.requestFocus()
-        }
 
         if (vEtPasswordSignup?.text.toString().trim { it <= ' ' }.isEmpty()) {
             vEtPasswordSignup?.error = "enter password"
@@ -52,23 +37,10 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
             vEtUsernameSignup?.error = "enter username"
             vEtUsernameSignup?.requestFocus()
         }
-        if (vEtPasswordSignup?.text.toString() != vEtConfirmPassword?.text.toString()) {
-            vEtConfirmPassword?.error = "invalid confirmation"
-            vEtConfirmPassword?.requestFocus()
-        } else {
-            writeToDataBase(
-                vEtUsernameSignup?.text.toString().trim { it <= ' ' },
-                vEtPasswordSignup?.text.toString().trim { it <= ' ' })
-        }
-    }
-
-    private fun initListeners() {
-        vTvLogIn.setOnClickListener {
-            signupPresenter.onLoginClicked()
-            //finish()
         }
 
     }
+
 
     private fun writeToDataBase(username: String?, password: String?) {
         mRealm?.executeTransactionAsync({ bgRealm ->

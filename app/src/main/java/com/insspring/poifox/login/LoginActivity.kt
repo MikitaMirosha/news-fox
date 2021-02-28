@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+
 import android.widget.*
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
@@ -13,10 +14,7 @@ import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R.*
 import com.insspring.poifox.initial.InitialActivity
 import com.insspring.poifox.signup.SignupActivity
-import kotlinx.android.synthetic.main.activity_login.*
-import java.util.*
 
-class LoginActivity : BaseMvpActivity(), LoginView {
 
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
@@ -25,20 +23,6 @@ class LoginActivity : BaseMvpActivity(), LoginView {
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         initListeners()
-    }
-
-    private fun initListeners() {
-        vTvSignUp.setOnClickListener {
-            loginPresenter.onSignupClicked()
-            //finish()
-        }
-
-        vFlLogin.setOnClickListener {
-            loginPresenter.onEnterClicked(
-                vEtUsernameLogin.text.toString(),
-                vEtPasswordLogin.text.toString()
-            )
-        }
     }
 
     override fun updateImages() {
@@ -52,6 +36,7 @@ class LoginActivity : BaseMvpActivity(), LoginView {
             .placeholder(drawable.ic_key)
             .into(vIvKey)
     }
+
 
     override fun updateTitleName() {
         val spannable = SpannableString(getString(string.poifox))
@@ -70,9 +55,11 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         vTvTitleNameLogin.text = spannable
     }
 
+
     override fun updateSignupButton() {
         vTvSignUp.text = getString(string.signup)
     }
+
 
     override fun openSignupActivity() {
         val intent = Intent(this@LoginActivity, SignupActivity::class.java)
@@ -82,16 +69,6 @@ class LoginActivity : BaseMvpActivity(), LoginView {
     override fun openInitialActivity() {
         val intent = Intent(this@LoginActivity, InitialActivity::class.java)
         startActivity(intent)
-    }
-
-    override fun showEditTextUsernameHint() {
-        vEtUsernameLogin?.error = "enter username"
-        vEtUsernameLogin?.requestFocus()
-    }
-
-    override fun showEditTextPasswordHint() {
-        vEtPasswordLogin?.error = "enter password"
-        vEtPasswordLogin?.requestFocus()
     }
 
 }
