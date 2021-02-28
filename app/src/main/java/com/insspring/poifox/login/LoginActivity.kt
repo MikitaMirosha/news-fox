@@ -1,7 +1,11 @@
 package com.insspring.poifox.login
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.*
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -44,23 +48,19 @@ class LoginActivity : BaseMvpActivity(), View.OnClickListener, LoginView {
                 if (vEtUsernameLogin?.text.toString().trim { it <= ' ' }.isEmpty()) {
                     vEtUsernameLogin?.error = "enter username"
                     vEtUsernameLogin?.requestFocus()
-                }
-                else {
-                    val email = vEtUsernameLogin?.text.toString()
+                } else {
+                    val username = vEtUsernameLogin?.text.toString()
                     val password = vEtPasswordLogin?.text.toString()
                     val register: Register? = mRealm?.where(Register::class.java)
-                        ?.equalTo("username", email)
+                        ?.equalTo("username", username)
                         ?.equalTo("password", password)
                         ?.findFirst()
                     if (register != null) {
-                        Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this@LoginActivity, InitialActivity::class.java)
-                        startActivity(intent)
+                        openInitialActivity()
                     } else {
-                        Toast.makeText(this, "Fail", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "wrong data", Toast.LENGTH_SHORT).show()
                     }
                 }
-
             }
         }
     }
@@ -68,11 +68,12 @@ class LoginActivity : BaseMvpActivity(), View.OnClickListener, LoginView {
     private fun initListeners() {
         vTvSignUp.setOnClickListener {
             loginPresenter.onSignupClicked()
+            finish()
         }
 
-//        vFlLogin.setOnClickListener {
-//            loginPresenter.onLoginClicked()
-//        }
+        vFlLogin.setOnClickListener {
+            loginPresenter.onEnterClicked()
+        }
     }
 
     override fun updateImages() {
@@ -88,8 +89,25 @@ class LoginActivity : BaseMvpActivity(), View.OnClickListener, LoginView {
     }
 
     override fun updateEditText() {
-        vEtUsernameLogin = findViewById<View>(id.vEtUsernameLogin) as EditText
-        vEtPasswordLogin = findViewById<View>(id.vEtPasswordLogin) as EditText
+        vEtUsernameLogin = findViewById(id.vEtUsernameLogin)
+        vEtPasswordLogin = findViewById(id.vEtPasswordLogin)
+    }
+
+    override fun updateTitleName() {
+        val spannable = SpannableString(getString(string.poifox))
+        spannable.setSpan(
+            ForegroundColorSpan(Color.WHITE),
+            0,
+            2,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#EB874B")),
+            3,
+            6,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        vTvTitleNameLogin.text = spannable
     }
 
     override fun initOnLoginButton() {
@@ -109,9 +127,9 @@ class LoginActivity : BaseMvpActivity(), View.OnClickListener, LoginView {
         startActivity(intent)
     }
 
-//    override fun openInitialActivity() {
-//        val intent = Intent(this@LoginActivity, InitialActivity::class.java)
-//        startActivity(intent)
-//    }
+    override fun openInitialActivity() {
+        val intent = Intent(this@LoginActivity, InitialActivity::class.java)
+        startActivity(intent)
+    }
 
 }
