@@ -1,4 +1,8 @@
 package com.insspring.poifox.signup
 
-class SignupView {
+import com.delivery.ui.base.BaseMvpView
+
+interface SignupView : BaseMvpView {
+    fun openLoginActivity()
+    fun updateTitleName()
 }

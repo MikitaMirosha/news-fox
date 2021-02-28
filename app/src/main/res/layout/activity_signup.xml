@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBg"
     tools:context=".login.LoginActivity">
 
@@ -14,23 +13,31 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/vIvFox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_16"
-            tools:src="@drawable/ic_fox" />
-
         <TextView
+            android:id="@+id/vTvTitleNameSignUp"
             style="@style/TextView.TitleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/dp_16"
             android:text="@string/poifox" />
 
+        <TextView
+            style="@style/TextView.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:text="@string/description" />
+
         <View style="@style/Divider" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/vTvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,6 +54,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/vTvLogIn"
                 style="@style/TextView.Signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,17 +84,27 @@
             style="@style/CustomEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_envelope" />
+            android:drawableStart="@drawable/ic_envelope"
+            android:hint="@string/username" />
 
         <EditText
             android:id="@+id/vEtPasswordSignup"
             style="@style/CustomEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_lock" />
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/password" />
+
+        <EditText
+            android:id="@+id/vEtConfirmPassword"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/confirm_password" />
 
         <FrameLayout
-            android:id="@+id/vFlLogin"
+            android:id="@+id/vFlSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_16"
@@ -97,49 +115,16 @@
             android:focusable="true"
             android:onClick="onClick">
 
-            <ImageView
-                android:id="@+id/vIvKey"
+            <TextView
+                style="@style/TextView.SignupButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                tools:src="@drawable/ic_key" />
+                android:text="@string/signup" />
 
         </FrameLayout>
 
     </LinearLayout>
-
-<!--    <EditText-->
-<!--        android:id="@+id/vEtUsernameSignup"-->
-<!--        android:layout_width="350dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:drawableLeft="@drawable/ic_envelope"-->
-<!--        android:gravity="center"-->
-<!--        android:hint="@string/username"-->
-<!--        android:textColor="#090808"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/vEtPasswordSignup"-->
-<!--        android:layout_width="350dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:drawableLeft="@drawable/ic_lock"-->
-<!--        android:gravity="center"-->
-<!--        android:hint="@string/password"-->
-<!--        android:textColor="#090808"-->
-<!--        android:textStyle="bold" />-->
-
-    <Button
-        android:id="@+id/vBtnSignup"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="@string/signup"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
 
     <TextView
         android:id="@+id/resultText"
