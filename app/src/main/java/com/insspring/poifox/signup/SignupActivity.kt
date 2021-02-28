@@ -7,13 +7,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import com.arellomobile.mvp.presenter.InjectPresenter
-import com.delivery.ui.base.BaseMvpActivity
-import com.insspring.poifox.R
-import com.insspring.poifox.initial.InitialActivity
+
 import com.insspring.poifox.login.LoginActivity
 import com.insspring.poifox.model.Register
 import io.realm.Realm
@@ -29,17 +23,12 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
 
     override fun getLayoutId(): Int = R.layout.activity_signup
 
-    private var vEtUsernameSignup: EditText? = null
-    private var vEtPasswordSignup: EditText? = null
-    private var vEtConfirmPassword: EditText? = null
-
-    private var mRealm: Realm? = null
-
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         initListeners()
     }
 
     override fun onClick(view: View) {
+
         if (vEtPasswordSignup?.text.toString().trim { it <= ' ' }.isEmpty()) {
             vEtPasswordSignup?.error = "enter password"
             vEtPasswordSignup?.requestFocus()
@@ -48,24 +37,10 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
             vEtUsernameSignup?.error = "enter username"
             vEtUsernameSignup?.requestFocus()
         }
-        if(vEtPasswordSignup?.text.toString() != vEtConfirmPassword?.text.toString()) {
-            vEtConfirmPassword?.error = "invalid confirmation"
-            vEtConfirmPassword?.requestFocus()
-        }
-        else {
-            writeToDataBase(
-                vEtUsernameSignup?.text.toString().trim { it <= ' ' },
-                vEtPasswordSignup?.text.toString().trim { it <= ' ' })
-        }
-    }
-
-    private fun initListeners() {
-        vTvLogIn.setOnClickListener {
-            signupPresenter.onLoginClicked()
-            finish()
         }
 
     }
+
 
     private fun writeToDataBase(username: String?, password: String?) {
         mRealm?.executeTransactionAsync({ bgRealm ->
@@ -87,16 +62,6 @@ class SignupActivity : BaseMvpActivity(), View.OnClickListener, SignupView {
     override fun openLoginActivity() {
         val intent = Intent(this@SignupActivity, LoginActivity::class.java)
         startActivity(intent)
-    }
-
-    override fun initRealm() {
-        mRealm = Realm.getDefaultInstance()
-    }
-
-    override fun updateEditText() {
-        vEtUsernameSignup = findViewById(R.id.vEtUsernameSignup)
-        vEtPasswordSignup = findViewById(R.id.vEtPasswordSignup)
-        vEtConfirmPassword = findViewById(R.id.vEtConfirmPassword)
     }
 
     override fun updateTitleName() {
