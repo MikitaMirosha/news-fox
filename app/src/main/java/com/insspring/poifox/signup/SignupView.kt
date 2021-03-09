@@ -4,7 +4,8 @@ import com.delivery.ui.base.BaseMvpView
 
 interface SignupView : BaseMvpView {
     fun openLoginActivity()
-    fun initRealm()
-    fun updateEditText()
     fun updateTitleName()
+    fun showInvalidUsername()
+    fun showInvalidPassword()
+    fun showInvalidPasswordConfirmation()
 }

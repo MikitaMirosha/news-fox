@@ -36,7 +36,7 @@ class InitialActivity : BaseMvpActivity(), InitialView {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         spannable.setSpan(
-            ForegroundColorSpan(Color.parseColor("#EB874B")),
+            ForegroundColorSpan(Color.parseColor("#EB874B")), // цвет в колорс
             3,
             6,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
