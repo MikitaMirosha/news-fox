@@ -1,78 +1,79 @@
 package com.insspring.poifox.signup
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import com.arellomobile.mvp.presenter.InjectPresenter
 import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R
-import com.insspring.poifox.model.Register
-import io.realm.Realm
-import io.realm.RealmResults
-import io.realm.kotlin.createObject
-import io.realm.kotlin.where
+import com.insspring.poifox.login.LoginActivity
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_signup.*
 
 
-class SignupActivity : BaseMvpActivity(), View.OnClickListener {
+class SignupActivity : BaseMvpActivity(), SignupView {
+
+    @InjectPresenter
+    lateinit var signupPresenter: SignupPresenter
 
     override fun getLayoutId(): Int = R.layout.activity_signup
 
-    var vTvResult: TextView? = null
-    var vEtUsername: EditText? = null
-    var vEtPassword: EditText? = null
-    var vBtnSignup: Button? = null
-    var mRealm: Realm? = null
-
     override fun onCreateActivity(savedInstanceState: Bundle?) {
-
-        vEtUsername = findViewById<View>(R.id.vEtUsername) as EditText
-        vEtPassword = findViewById<View>(R.id.vEtPassword) as EditText
-        vBtnSignup = findViewById<View>(R.id.vBtnSignup) as Button
-        vTvResult = findViewById<View>(R.id.resultText) as TextView
-        mRealm = Realm.getDefaultInstance()
-        vBtnSignup?.setOnClickListener(this)
-        showResults()
+        initListeners()
     }
 
-    override fun onClick(view: View) {
-        if (vEtUsername?.text.toString().trim { it <= ' ' }.isEmpty()) {
-            vEtUsername?.error = "Enter username"
-            vEtUsername?.requestFocus()
+    private fun initListeners() {
+        vTvLogIn.setOnClickListener {
+            signupPresenter.onLoginClicked()
         }
-        if (vEtPassword?.text.toString().trim { it <= ' ' }.isEmpty()) {
-            vEtPassword?.error = "Enter password"
-            vEtPassword?.requestFocus()
-        } else {
-            writeToDataBase(
-                vEtUsername?.text.toString().trim { it <= ' ' },
-                vEtPassword?.text.toString().trim { it <= ' ' })
+
+        vFlSignup.setOnClickListener {
+            signupPresenter.onSignupClicked(
+                vEtUsernameSignup.text.toString(),
+                vEtPasswordSignup.text.toString(),
+                vEtConfirmPassword.text.toString()
+            )
         }
     }
 
-    fun writeToDataBase(username: String?, password: String?) {
-        mRealm?.executeTransactionAsync({ bgRealm ->
-            val user: Register = bgRealm.createObject()
-            user.username = username
-            user.password = password
-        }, {
-            Toast.makeText(this@SignupActivity, "Success", Toast.LENGTH_SHORT).show()
-            showResults()
-        }) { error ->
-            Toast.makeText(this@SignupActivity, "Fail", Toast.LENGTH_SHORT).show()
-        }
+    override fun openLoginActivity() {
+        val intent = Intent(this@SignupActivity, LoginActivity::class.java)
+        startActivity(intent)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mRealm?.close()
+    override fun updateTitleName() {
+        val spannable = SpannableString(getString(R.string.poifox))
+        spannable.setSpan(
+            ForegroundColorSpan(Color.WHITE),
+            0,
+            2,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#EB874B")), // цвет в колорс
+            3,
+            6,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        vTvTitleNameSignUp.text = spannable
     }
 
-    private fun showResults() {
-        val userList: RealmResults<Register> = mRealm?.where<Register>()!!.findAll()
-        vTvResult?.text = userList.toString()
+    override fun showInvalidUsername() {
+        vEtUsernameLogin?.error = "enter username"
+        vEtUsernameLogin?.requestFocus()
     }
+
+    override fun showInvalidPassword() {
+        vEtPasswordLogin?.error = "enter password"
+        vEtPasswordLogin?.requestFocus()
+    }
+
+    override fun showInvalidPasswordConfirmation() {
+        vEtConfirmPassword?.error = "invalid confirmation"
+        vEtConfirmPassword?.requestFocus()
+    }
+
 }
-
-
