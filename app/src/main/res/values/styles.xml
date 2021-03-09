@@ -20,9 +20,10 @@
         <item name="android:layout_marginEnd">@dimen/dp_16</item>
         <item name="android:layout_marginBottom">@dimen/dp_16</item>
         <item name="android:background">@drawable/ic_rec_rounded_12</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:drawablePadding">@dimen/dp_16</item>
         <item name="android:paddingStart">@dimen/dp_16</item>
+        <item name="android:fontFamily">@font/ptsans</item>
     </style>
 
     <style name="TextView" />
@@ -36,12 +37,12 @@
 
     <style name="TextView.Description">
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ptsans</item>
     </style>
 
-    <style name="TextView.LogIn">
+    <style name="TextView.Login">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/colorOrange</item>
@@ -56,9 +57,17 @@
         <item name="android:layout_marginStart">@dimen/dp_6</item>
     </style>
 
-    <style name="TextView.SignUp">
+    <style name="TextView.Signup">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/ptsans</item>
+        <item name="android:layout_marginStart">@dimen/dp_6</item>
+    </style>
+
+    <style name="TextView.SignupButton">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ptsans</item>
         <item name="android:layout_marginStart">@dimen/dp_6</item>

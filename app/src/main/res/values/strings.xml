@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Poifox</string>
-    <string name="login_page">LOGIN</string>
-    <string name="username">username</string>
-    <string name="password">password</string>
-    <string name="initial_activity">INITIAL ACTIVITY</string>
+
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
 
     <string name="poifox">POIfox</string>
     <string name="description">Find the best places in town</string>
@@ -11,4 +11,6 @@
     <string name="or">or</string>
     <string name="signup">Sing up</string>
     <string name="recover_password">Forgot password? Recover here</string>
+
+    <string name="hello">Hello</string>
 </resources>
