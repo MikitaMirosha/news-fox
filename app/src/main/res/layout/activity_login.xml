@@ -55,7 +55,6 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/TextView.Login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login" />
@@ -68,7 +67,6 @@
 
             <TextView
                 android:id="@+id/vTvSignUp"
-                style="@style/TextView.Signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -83,29 +81,6 @@
             style="@style/CustomEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_envelope"
-            android:hint="@string/username" />
-
-        <EditText
-            android:id="@+id/vEtPasswordLogin"
-            style="@style/CustomEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_lock"
-            android:hint="@string/password" />
-
-        <FrameLayout
-            android:id="@+id/vFlLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:layout_marginBottom="@dimen/dp_16"
-            android:background="@drawable/bg_rec_rounded_12"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="onClick">
-
             <ImageView
                 android:id="@+id/vIvKey"
                 android:layout_width="wrap_content"

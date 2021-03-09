@@ -2,14 +2,12 @@ package com.insspring.poifox.initial
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R
 import kotlinx.android.synthetic.main.activity_login.*
+
 
 class InitialActivity : BaseMvpActivity(), InitialView {
 

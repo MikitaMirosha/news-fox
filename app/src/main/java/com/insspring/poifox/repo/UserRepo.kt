@@ -8,15 +8,4 @@ open class UserRepo {
 
     private val userStorage = UserStorage()
 
-    fun getUser(): UserModel {
-        return UserModel()
-    }
-
-    open fun getStorageInstance(): Realm? {
-        return userStorage.getRealmDefaultInstance()
-    }
-
-    fun getAllUsers(): MutableList<UserModel> {
-        return mutableListOf(UserModel())
-    }
 }

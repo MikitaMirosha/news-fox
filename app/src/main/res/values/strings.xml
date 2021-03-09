@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">Poifox</string>
-
-    <string name="username">Username</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm password</string>
-
     <string name="poifox">POIfox</string>
     <string name="description">Find the best places in town</string>
     <string name="login">Log in </string>
