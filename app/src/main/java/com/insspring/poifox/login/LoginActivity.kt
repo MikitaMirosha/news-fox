@@ -45,5 +45,4 @@ import com.insspring.poifox.signup.SignupActivity
         val intent = Intent(this@LoginActivity, SignupActivity::class.java)
         startActivity(intent)
     }
-
 }

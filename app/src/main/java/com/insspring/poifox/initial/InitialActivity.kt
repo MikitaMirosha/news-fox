@@ -2,7 +2,6 @@ package com.insspring.poifox.initial
 
 import android.graphics.Color
 import android.os.Bundle
-
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.delivery.ui.base.BaseMvpActivity
@@ -24,5 +23,22 @@ class InitialActivity : BaseMvpActivity(), InitialView {
             .load(R.drawable.ic_fox)
             .placeholder(R.drawable.ic_fox)
             .into(vIvFox)
+    }
+
+    override fun updateTitleName() {
+        val spannable = SpannableString(getString(R.string.poifox))
+        spannable.setSpan(
+            ForegroundColorSpan(Color.WHITE),
+            0,
+            2,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#EB874B")), // цвет в колорс
+            3,
+            6,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        vTvTitleNameLogin.text = spannable
     }
 }
