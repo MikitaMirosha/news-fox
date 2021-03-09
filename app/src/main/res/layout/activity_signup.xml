@@ -3,6 +3,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBg"
+    tools:context=".login.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/vTvTitleNameSignUp"
+            style="@style/TextView.TitleName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_16"
+            android:text="@string/poifox" />
+
+        <TextView
+            style="@style/TextView.Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:text="@string/description" />
+
+        <View style="@style/Divider" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/vTvResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/vLlLogInOrSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/vTvLogIn"
+                style="@style/TextView.Signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick"
+                android:text="@string/login" />
+
+            <TextView
+                style="@style/TextView.Or"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/or" />
+
             <TextView
                 android:id="@+id/vTvSignUp"
                 style="@style/TextView.Login"
@@ -28,7 +94,33 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_lock"
             android:hint="@string/password" />
+      
+            <TextView
+                android:id="@+id/vTvSignUp"
+                style="@style/TextView.Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:text="@string/signup" />
 
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/vEtUsernameSignup"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_envelope"
+            android:hint="@string/username" />
+
+        <EditText
+            android:id="@+id/vEtPasswordSignup"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/password" />
+  
         <EditText
             android:id="@+id/vEtConfirmPassword"
             style="@style/CustomEditText"

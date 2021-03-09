@@ -21,7 +21,7 @@
             tools:src="@drawable/ic_fox" />
 
         <TextView
-
+            android:id="@+id/vTvTitleNameLogin"
             style="@style/TextView.TitleName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,6 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_32"
+            android:text="@string/hello" />
 
     </LinearLayout>
 
