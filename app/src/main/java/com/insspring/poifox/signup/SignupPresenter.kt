@@ -10,10 +10,7 @@ import io.realm.kotlin.createObject
 @InjectViewState
 class SignupPresenter : BaseMvpPresenter<SignupView>() {
 
-    private val userStorage: UserStorage = UserStorage()
-
     private var repo = UserRepo()
-    // создать экземпляр repo и repo обращается к storage
 
     init {
         viewState.updateTitleName()
@@ -27,45 +24,41 @@ class SignupPresenter : BaseMvpPresenter<SignupView>() {
     }
 
     private fun isUser(username: String, password: String): Boolean {
-        val register: UserModel? = userStorage.getRealmDefaultInstance()?.where(UserModel::class.java)
-            ?.equalTo("username", username)
-            ?.equalTo("password", password)
-            ?.findFirst()
+        val user = repo.getUserByUsernameAndPassword(username, password)
 
-        if(register?.username == username && register.password == password) {
-            return true
+        if(user?.username != null || user?.password != null) {
+            if(user.username == username && user.password == password) {
+                return true
+            }
         }
         return false
     }
 
     fun onSignupClicked(username: String, password: String, confirmPassword: String) {
-        if (isPasswordSignupEmpty(password)) {
-            viewState.showInvalidPassword()
-        }
 
-        if (isUsernameSignupEmpty(username)) {
-            viewState.showInvalidUsername()
-        }
-
-        if (confirmPassword != password) {
-            viewState.showInvalidPasswordConfirmation()
-        }
-
-        if(isUser(username, password)) { // запись пустых полей
-            showMessage("invalid data")
+        if(!(isPasswordSignupEmpty(password))) {
+            if(!(isUsernameSignupEmpty(username))) {
+                if (confirmPassword == password) {
+                    if((isUser(username, password))) {
+                        showMessage("invalid data")
+                    } else {
+                        saveUser(username, password)
+                    }
+                } else {
+                    viewState.showInvalidPasswordConfirmation()
+                }
+            } else {
+                viewState.showInvalidUsername()
+            }
         } else {
-            saveUser(username, password)
+            viewState.showInvalidPassword()
         }
     }
 
     private fun saveUser(username: String?, password: String?) {
-        userStorage.getRealmDefaultInstance()?.executeTransactionAsync({ bgRealm ->
-            val register: UserModel = bgRealm.createObject()
-            register.username = username
-            register.password = password
-        }, {
+        if(repo.saveUser(username, password)) {
             showMessage("success")
-        }) {
+        } else {
             showMessage("wrong data")
         }
     }

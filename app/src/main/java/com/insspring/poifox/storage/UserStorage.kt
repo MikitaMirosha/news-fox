@@ -3,6 +3,7 @@ package com.insspring.poifox.storage
 import com.insspring.poifox.model.UserModel
 import io.realm.Realm
 import io.realm.Realm.getDefaultInstance
+import io.realm.kotlin.createObject
 
 
 class UserStorage {
@@ -30,6 +31,15 @@ class UserStorage {
             userList = realmList.subList(0, realmList.size)
         }
         return userList
+    }
+
+    fun saveUser(username: String?, password: String?): Boolean {
+        getRealmDefaultInstance()?.executeTransactionAsync { bgRealm ->
+            val user: UserModel = bgRealm.createObject()
+            user.username = username
+            user.password = password
+        }
+        return true
     }
 
 }

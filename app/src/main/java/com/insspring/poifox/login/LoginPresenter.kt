@@ -22,20 +22,18 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
     }
 
     fun onEnterClicked(username: String, password: String) {
-        if (isPasswordLoginEmpty(password)) {
+        if(!(isPasswordLoginEmpty(password))) {
+            if(!(isUsernameLoginEmpty(username))) {
+                val user = repo.getUserByUsernameAndPassword(username, password)
+                if(user != null) {
+                    viewState.openInitialActivity()
+                }
+            } else {
+                viewState.showInvalidUsername()
+            }
+        } else {
             viewState.showInvalidPassword()
         }
-        if (isUsernameLoginEmpty(username)) {
-            viewState.showInvalidUsername()
-        }
-
-        if(!(isPasswordLoginEmpty(password)) && !(isUsernameLoginEmpty(username))) {
-            val user = repo.getUserByUsernameAndPassword(username, password)
-            if(user != null) {
-                viewState.openInitialActivity()
-            }
-        }
-
     }
 
     private fun isUsernameLoginEmpty(username: String): Boolean = username.isEmpty()
