@@ -33,6 +33,8 @@
 
     <style name="TextView.Description">
         <item name="android:textStyle">normal</item>
+<
+
 
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
@@ -53,6 +55,16 @@
         <item name="android:fontFamily">@font/ptsans</item>
         <item name="android:layout_marginStart">@dimen/dp_6</item>
     </style>
+
+
+    <style name="TextView.SignupButton">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/ptsans</item>
+        <item name="android:layout_marginStart">@dimen/dp_6</item>
+    </style>
+
     <style name="TextView.RecoverPassword">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
