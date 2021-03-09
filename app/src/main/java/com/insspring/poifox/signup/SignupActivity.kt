@@ -6,14 +6,9 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-<<<<<<< HEAD
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R
-=======
-import android.view.View
-
->>>>>>> origin
 import com.insspring.poifox.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -30,7 +25,6 @@ class SignupActivity : BaseMvpActivity(), SignupView {
         initListeners()
     }
 
-<<<<<<< HEAD
     private fun initListeners() {
         vTvLogIn.setOnClickListener {
             signupPresenter.onLoginClicked()
@@ -42,32 +36,6 @@ class SignupActivity : BaseMvpActivity(), SignupView {
                 vEtPasswordSignup.text.toString(),
                 vEtConfirmPassword.text.toString()
             )
-=======
-    override fun onClick(view: View) {
-
-        if (vEtPasswordSignup?.text.toString().trim { it <= ' ' }.isEmpty()) {
-            vEtPasswordSignup?.error = "enter password"
-            vEtPasswordSignup?.requestFocus()
-        }
-        if (vEtUsernameSignup?.text.toString().trim { it <= ' ' }.isEmpty()) {
-            vEtUsernameSignup?.error = "enter username"
-            vEtUsernameSignup?.requestFocus()
-        }
-        }
-
-    }
-
-
-    private fun writeToDataBase(username: String?, password: String?) {
-        mRealm?.executeTransactionAsync({ bgRealm ->
-            val register: Register = bgRealm.createObject()
-            register.username = username
-            register.password = password
-        }, {
-            Toast.makeText(this@SignupActivity, "success", Toast.LENGTH_SHORT).show()
-        }) { error ->
-            Toast.makeText(this@SignupActivity, "wrong data", Toast.LENGTH_SHORT).show()
->>>>>>> origin
         }
     }
 

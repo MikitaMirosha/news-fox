@@ -6,10 +6,6 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-<<<<<<< HEAD
-=======
-
->>>>>>> origin
 import android.widget.*
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
@@ -17,14 +13,10 @@ import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R.*
 import com.insspring.poifox.initial.InitialActivity
 import com.insspring.poifox.signup.SignupActivity
-<<<<<<< HEAD
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.*
 
 class LoginActivity : BaseMvpActivity(), LoginView {
-=======
-
->>>>>>> origin
 
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
@@ -35,7 +27,6 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         initListeners()
     }
 
-<<<<<<< HEAD
     private fun initListeners() {
         vTvSignUp.setOnClickListener {
             loginPresenter.onSignupClicked()
@@ -49,8 +40,6 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         }
     }
 
-=======
->>>>>>> origin
     override fun updateImages() {
         Glide.with(this)
             .load(drawable.ic_fox)
@@ -63,10 +52,6 @@ class LoginActivity : BaseMvpActivity(), LoginView {
             .into(vIvKey)
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin
     override fun updateTitleName() {
         val spannable = SpannableString(getString(string.poifox))
         spannable.setSpan(
@@ -84,18 +69,10 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         vTvTitleNameLogin.text = spannable
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin
     override fun updateSignupButton() {
         vTvSignUp.text = getString(string.signup)
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin
     override fun openSignupActivity() {
         val intent = Intent(this@LoginActivity, SignupActivity::class.java)
         startActivity(intent)

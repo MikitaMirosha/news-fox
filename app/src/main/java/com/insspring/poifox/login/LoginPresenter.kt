@@ -2,32 +2,32 @@ package com.insspring.poifox.login
 
 import com.arellomobile.mvp.InjectViewState
 import com.delivery.ui.base.BaseMvpPresenter
+import com.insspring.poifox.model.UserModel
 import com.insspring.poifox.repo.UserRepo
-
+import com.insspring.poifox.storage.UserStorage
 
 @InjectViewState
 class LoginPresenter : BaseMvpPresenter<LoginView>() {
 
-    private val repo = UserRepo()
+    // создать экземпляр repo и repo обращается к storage
+    private var repo = UserRepo()
+    private var userModel = repo.getUser()
+    private var storageInstance = repo.getStorageInstance()
 
     init {
         viewState.updateImages()
-<<<<<<< HEAD
         viewState.updateTitleName()
         viewState.updateSignupButton()
         viewState.showInvalidUsername()
         viewState.showInvalidPassword()
-=======
-
->>>>>>> origin
     }
 
     fun onSignupClicked() {
         viewState.openSignupActivity()
     }
 
-<<<<<<< HEAD
     fun onEnterClicked(username: String, password: String) {
+
         if (isPasswordLoginEmpty(password)) {
             viewState.showInvalidPassword()
         }
@@ -35,14 +35,15 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
             viewState.showInvalidUsername()
         }
 
-        val user = repo.getUser(username, password)
+        val register: UserModel? = registerStorage.getRealmDefaultInstance()?.where(UserModel::class.java)
+            ?.equalTo("username", username)
+            ?.equalTo("password", password)
+            ?.findFirst()
 
-        if(user != null) {
+        if (register != null) {
             viewState.openInitialActivity()
         }
     }
-=======
->>>>>>> origin
 
     private fun isUsernameLoginEmpty(username: String): Boolean = username.isEmpty()
 

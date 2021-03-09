@@ -3,18 +3,13 @@ package com.insspring.poifox.signup
 import com.arellomobile.mvp.InjectViewState
 import com.delivery.ui.base.BaseMvpPresenter
 import com.insspring.poifox.model.UserModel
-import com.insspring.poifox.repo.UserRepo
 import com.insspring.poifox.storage.UserStorage
 import io.realm.kotlin.createObject
-
 
 @InjectViewState
 class SignupPresenter : BaseMvpPresenter<SignupView>() {
 
-<<<<<<< HEAD
     private val userStorage: UserStorage = UserStorage()
-
-    private var repo = UserRepo()
     // создать экземпляр repo и repo обращается к storage
 
     init {
@@ -23,15 +18,12 @@ class SignupPresenter : BaseMvpPresenter<SignupView>() {
         viewState.showInvalidPassword()
         viewState.showInvalidPasswordConfirmation()
     }
-=======
->>>>>>> origin
 
     fun onLoginClicked() {
         viewState.openLoginActivity()
     }
 
-<<<<<<< HEAD
-    private fun isUser(username: String, password: String): Boolean {
+    private fun isRegistered(username: String, password: String): Boolean {
         val register: UserModel? = userStorage.getRealmDefaultInstance()?.where(UserModel::class.java)
             ?.equalTo("username", username)
             ?.equalTo("password", password)
@@ -56,14 +48,14 @@ class SignupPresenter : BaseMvpPresenter<SignupView>() {
             viewState.showInvalidPasswordConfirmation()
         }
 
-        if(isUser(username, password)) { // запись пустых полей
+        if(isRegistered(username, password)) { // запись пустых полей
             showMessage("invalid data")
         } else {
-            saveUser(username, password)
+            saveRegister(username, password)
         }
     }
 
-    private fun saveUser(username: String?, password: String?) {
+    private fun saveRegister(username: String?, password: String?) {
         userStorage.getRealmDefaultInstance()?.executeTransactionAsync({ bgRealm ->
             val register: UserModel = bgRealm.createObject()
             register.username = username
@@ -77,13 +69,11 @@ class SignupPresenter : BaseMvpPresenter<SignupView>() {
 
     override fun onDestroy() {
         super.onDestroy()
-        repo.closeStorage()
+        userStorage.getRealmDefaultInstance()?.close()
     }
 
     private fun isUsernameSignupEmpty(username: String): Boolean = username.isEmpty()
 
     private fun isPasswordSignupEmpty(password: String): Boolean = password.isEmpty()
-=======
->>>>>>> origin
 
 }
