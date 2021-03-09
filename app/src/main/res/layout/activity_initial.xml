@@ -44,7 +44,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_32"
 
-
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

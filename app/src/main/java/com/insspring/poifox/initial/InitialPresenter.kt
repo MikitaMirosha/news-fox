@@ -8,6 +8,5 @@ class InitialPresenter : BaseMvpPresenter<InitialView>() {
 
     init {
         viewState.updateImages()
-
     }
 }

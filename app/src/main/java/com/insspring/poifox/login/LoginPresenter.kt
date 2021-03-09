@@ -6,19 +6,9 @@ import com.delivery.ui.base.BaseMvpPresenter
 @InjectViewState
 class LoginPresenter : BaseMvpPresenter<LoginView>() {
 
-    init {
-        viewState.updateImages()
-        viewState.updateEditText()
-
-        viewState.initOnLoginButton()
-        viewState.updateSignupButton()
-        viewState.initRealm()
     }
 
     fun onSignupClicked() {
         viewState.openSignupActivity()
     }
-
-
-
 }
