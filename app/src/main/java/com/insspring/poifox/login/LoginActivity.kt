@@ -13,6 +13,11 @@ import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R.*
 import com.insspring.poifox.initial.InitialActivity
 import com.insspring.poifox.signup.SignupActivity
+import kotlinx.android.synthetic.main.activity_login.*
+import java.util.*
+
+class LoginActivity : BaseMvpActivity(), LoginView {
+
 
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
@@ -21,6 +26,19 @@ import com.insspring.poifox.signup.SignupActivity
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         initListeners()
+    }
+
+    private fun initListeners() {
+        vTvSignUp.setOnClickListener {
+            loginPresenter.onSignupClicked()
+        }
+
+        vFlLogin.setOnClickListener {
+            loginPresenter.onEnterClicked(
+                vEtUsernameLogin.text.toString(),
+                vEtPasswordLogin.text.toString()
+            )
+        }
     }
 
     override fun updateImages() {
@@ -35,6 +53,21 @@ import com.insspring.poifox.signup.SignupActivity
             .into(vIvKey)
     }
 
+    override fun updateTitleName() {
+        val spannable = SpannableString(getString(string.poifox))
+        spannable.setSpan(
+            ForegroundColorSpan(Color.WHITE),
+            0,
+            2,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannable.setSpan(
+            ForegroundColorSpan(Color.parseColor("#EB874B")), // цвет в колорс
+            3,
+            6,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        vTvTitleNameLogin.text = spannable
     }
 
     override fun updateSignupButton() {
@@ -44,5 +77,20 @@ import com.insspring.poifox.signup.SignupActivity
     override fun openSignupActivity() {
         val intent = Intent(this@LoginActivity, SignupActivity::class.java)
         startActivity(intent)
+    }
+
+    override fun openInitialActivity() {
+        val intent = Intent(this@LoginActivity, InitialActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun showInvalidUsername() {
+        vEtUsernameLogin?.error = "enter username"
+        vEtUsernameLogin?.requestFocus()
+    }
+
+    override fun showInvalidPassword() {
+        vEtPasswordLogin?.error = "enter password"
+        vEtPasswordLogin?.requestFocus()
     }
 }
