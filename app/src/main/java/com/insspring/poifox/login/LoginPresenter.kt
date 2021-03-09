@@ -4,6 +4,7 @@ import com.arellomobile.mvp.InjectViewState
 import com.delivery.ui.base.BaseMvpPresenter
 import com.insspring.poifox.repo.UserRepo
 
+
 @InjectViewState
 class LoginPresenter : BaseMvpPresenter<LoginView>() {
 
@@ -11,16 +12,21 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
 
     init {
         viewState.updateImages()
+<<<<<<< HEAD
         viewState.updateTitleName()
         viewState.updateSignupButton()
         viewState.showInvalidUsername()
         viewState.showInvalidPassword()
+=======
+
+>>>>>>> origin
     }
 
     fun onSignupClicked() {
         viewState.openSignupActivity()
     }
 
+<<<<<<< HEAD
     fun onEnterClicked(username: String, password: String) {
         if (isPasswordLoginEmpty(password)) {
             viewState.showInvalidPassword()
@@ -35,6 +41,8 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
             viewState.openInitialActivity()
         }
     }
+=======
+>>>>>>> origin
 
     private fun isUsernameLoginEmpty(username: String): Boolean = username.isEmpty()
 

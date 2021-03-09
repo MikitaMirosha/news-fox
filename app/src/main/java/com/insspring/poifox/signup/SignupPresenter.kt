@@ -7,9 +7,11 @@ import com.insspring.poifox.repo.UserRepo
 import com.insspring.poifox.storage.UserStorage
 import io.realm.kotlin.createObject
 
+
 @InjectViewState
 class SignupPresenter : BaseMvpPresenter<SignupView>() {
 
+<<<<<<< HEAD
     private val userStorage: UserStorage = UserStorage()
 
     private var repo = UserRepo()
@@ -21,11 +23,14 @@ class SignupPresenter : BaseMvpPresenter<SignupView>() {
         viewState.showInvalidPassword()
         viewState.showInvalidPasswordConfirmation()
     }
+=======
+>>>>>>> origin
 
     fun onLoginClicked() {
         viewState.openLoginActivity()
     }
 
+<<<<<<< HEAD
     private fun isUser(username: String, password: String): Boolean {
         val register: UserModel? = userStorage.getRealmDefaultInstance()?.where(UserModel::class.java)
             ?.equalTo("username", username)
@@ -78,5 +83,7 @@ class SignupPresenter : BaseMvpPresenter<SignupView>() {
     private fun isUsernameSignupEmpty(username: String): Boolean = username.isEmpty()
 
     private fun isPasswordSignupEmpty(password: String): Boolean = password.isEmpty()
+=======
+>>>>>>> origin
 
 }
