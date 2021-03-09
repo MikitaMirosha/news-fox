@@ -18,6 +18,7 @@ import java.util.*
 
 class LoginActivity : BaseMvpActivity(), LoginView {
 
+
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
 
@@ -92,5 +93,4 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         vEtPasswordLogin?.error = "enter password"
         vEtPasswordLogin?.requestFocus()
     }
-
 }

@@ -94,7 +94,33 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_lock"
             android:hint="@string/password" />
+      
+            <TextView
+                android:id="@+id/vTvSignUp"
+                style="@style/TextView.Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:text="@string/signup" />
 
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/vEtUsernameSignup"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_envelope"
+            android:hint="@string/username" />
+
+        <EditText
+            android:id="@+id/vEtPasswordSignup"
+            style="@style/CustomEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_lock"
+            android:hint="@string/password" />
+  
         <EditText
             android:id="@+id/vEtConfirmPassword"
             style="@style/CustomEditText"

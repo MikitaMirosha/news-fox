@@ -40,6 +40,9 @@ class UserStorage {
             user.password = password
         }
         return true
+class UserStorage {
+
+    fun getRealmDefaultInstance(): Realm? {
     }
 
 }
