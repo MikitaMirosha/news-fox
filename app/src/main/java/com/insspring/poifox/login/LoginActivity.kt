@@ -6,15 +6,19 @@ import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-
 import android.widget.*
+import androidx.core.content.ContextCompat
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
-import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R.*
-import com.insspring.poifox.initial.InitialActivity
-import com.insspring.poifox.signup.SignupActivity
+import com.insspring.poifox.ui.base.BaseMvpActivity
+import com.insspring.poifox.user.UserActivity
+import com.insspring.poifox.utils.extensions.hide
+import com.insspring.poifox.utils.extensions.show
+import kotlinx.android.synthetic.main.activity_login.*
+import java.util.*
 
+class LoginActivity : BaseMvpActivity(), LoginView {
 
     @InjectPresenter
     lateinit var loginPresenter: LoginPresenter
@@ -23,6 +27,24 @@ import com.insspring.poifox.signup.SignupActivity
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {
         initListeners()
+    }
+
+    private fun initListeners() {
+        vTvLogin.setOnClickListener {
+            loginPresenter.onvTvLoginClicked()
+        }
+        vTvSignUp.setOnClickListener {
+            loginPresenter.onvTvSignupClicked()
+        }
+        vIvKeepLogIn.setOnClickListener {
+            loginPresenter.onvIvKeepMeLoggedInClicked()
+        }
+        vFlLogIn.setOnClickListener {
+            loginPresenter.onvFlLoginClicked()
+        }
+        vFlSignUp.setOnClickListener {
+            loginPresenter.onvFlSignupClicked()
+        }
     }
 
     override fun updateImages() {
@@ -54,21 +76,57 @@ import com.insspring.poifox.signup.SignupActivity
         vTvTitleNameLogin.text = spannable
     }
 
+    override fun openUserActivity() =
+        startActivity(Intent(this@LoginActivity, UserActivity::class.java))
 
-    override fun updateSignupButton() {
-        vTvSignUp.text = getString(string.signup)
+    override fun showInvalidMessage() = showMessage("invalid data")
+
+    override fun showSuccessMessage() = showMessage("success")
+
+    override fun showFillFieldsMessage() = showMessage("fill in all fields")
+
+    override fun showDifferentPasswordsMessage() = showMessage("passwords are different")
+
+    override fun enableLoginFields() {
+        vTvLogin.setTextColor(ContextCompat.getColor(this, color.colorOrange))
+        vTvSignUp.setTextColor(ContextCompat.getColor(this, color.colorWhite))
+        vEtConfirmPassword.hide()
+        vFlSignUp.hide()
+        vFlLogIn.show()
     }
 
-
-    override fun openSignupActivity() {
-        val intent = Intent(this@LoginActivity, SignupActivity::class.java)
-        startActivity(intent)
+    override fun enableSignupFields() {
+        vTvLogin.setTextColor(ContextCompat.getColor(this, color.colorWhite))
+        vTvSignUp.setTextColor(ContextCompat.getColor(this, color.colorOrange))
+        vFlLogIn.hide()
+        vEtConfirmPassword.show()
+        vFlSignUp.show()
     }
 
-    override fun openInitialActivity() {
-        val intent = Intent(this@LoginActivity, InitialActivity::class.java)
-        startActivity(intent)
+    override fun keepMeLoggedIn() {
+        if (vIvKeepLogIn.background.constantState?.equals(
+                ContextCompat.getDrawable(
+                    this,
+                    drawable.ic_uncheck
+                )?.constantState
+            ) == true
+        ) {
+            vIvKeepLogIn.setBackgroundResource(drawable.ic_check)
+        } else {
+            vIvKeepLogIn.setBackgroundResource(drawable.ic_uncheck)
+        }
     }
 
+    override fun loginUserAccount() =
+        loginPresenter.loginUser(vEtUsername.text.toString(), vEtPassword.text.toString())
+
+    override fun signupUserAccount() {
+        loginPresenter.signupUser(
+            0,
+            vEtUsername.text.toString(),
+            vEtPassword.text.toString(),
+            vEtConfirmPassword.text.toString()
+        )
+    }
 
 }

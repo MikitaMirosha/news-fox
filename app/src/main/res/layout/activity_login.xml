@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBg"
-    tools:context=".login.LoginActivity">
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/vIvFox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:paddingTop="@dimen/dp_16"
             tools:src="@drawable/ic_fox" />
 
@@ -24,87 +23,127 @@
             android:id="@+id/vTvTitleNameLogin"
             style="@style/TextView.TitleName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/dp_16"
-            android:text="@string/poifox" />
+            android:layout_height="wrap_content" />
 
         <TextView
             style="@style/TextView.Description"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_16"
-            android:layout_marginBottom="@dimen/dp_16"
-            android:text="@string/description" />
+            android:layout_height="wrap_content" />
 
         <View style="@style/Divider" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:orientation="vertical">
-
         <LinearLayout
-            android:id="@+id/vLlLogInOrSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_16"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="center">
 
             <TextView
+                android:id="@+id/vTvLogin"
                 style="@style/TextView.Login"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 style="@style/TextView.Or"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/or" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/vTvSignUp"
                 style="@style/TextView.Signup"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:onClick="onClick"
-                android:text="@string/signup" />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/vEtUsernameLogin"
-            style="@style/CustomEditText"
+        <LinearLayout
+            style="@style/EditTextLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_envelope"
-            android:hint="@string/username" />
+            android:layout_marginTop="@dimen/dp_16">
 
-        <EditText
-            android:id="@+id/vEtPasswordLogin"
-            style="@style/CustomEditText"
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_envelope" />
+
+            <EditText
+                android:id="@+id/vEtUsername"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/username" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/EditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_lock" />
+
+            <EditText
+                android:id="@+id/vEtPassword"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/password" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/EditTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_lock" />
+
+            <EditText
+                android:id="@+id/vEtConfirmPassword"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirm_password" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_lock"
-            android:hint="@string/password" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextView.KeepMeLoggedIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/vIvKeepLogIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_12"
+                android:background="@drawable/ic_uncheck" />
+
+        </LinearLayout>
 
         <FrameLayout
-            android:id="@+id/vFlLogin"
+            android:id="@+id/vFlLogIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginEnd="@dimen/dp_16"
-            android:layout_marginBottom="@dimen/dp_16"
+            android:layout_margin="@dimen/dp_16"
             android:background="@drawable/bg_rec_rounded_12"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onClick">
+            android:visibility="visible">
 
             <ImageView
                 android:id="@+id/vIvKey"
@@ -115,6 +154,44 @@
 
         </FrameLayout>
 
+        <FrameLayout
+            android:id="@+id/vFlSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_16"
+            android:background="@drawable/bg_rec_rounded_12"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/TextView.SignupButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/signup" />
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/TextView.ForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/vTvRecoverPass"
+                style="@style/TextView.RecoverHere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</ScrollView>

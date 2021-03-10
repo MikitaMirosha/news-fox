@@ -1,4 +1,4 @@
-package com.delivery.ui.base
+package com.insspring.poifox.ui.base
 
 import androidx.annotation.StringRes
 import com.arellomobile.mvp.MvpPresenter
@@ -12,4 +12,5 @@ abstract class BaseMvpPresenter<V : BaseMvpView> : MvpPresenter<V>() {
     protected fun showMessage(text: String) {
         viewState.showMessage(text)
     }
+
 }

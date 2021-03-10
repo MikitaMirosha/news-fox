@@ -1,11 +1,10 @@
-package com.insspring.poifox.initial
+package com.insspring.poifox.user
 
 import com.arellomobile.mvp.InjectViewState
-import com.delivery.ui.base.BaseMvpPresenter
+import com.insspring.poifox.ui.base.BaseMvpPresenter
 
 @InjectViewState
-class InitialPresenter : BaseMvpPresenter<InitialView>() {
-
+class UserPresenter : BaseMvpPresenter<UserView>() {
     init {
         viewState.updateImages()
         viewState.updateTitleName()

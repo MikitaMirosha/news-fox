@@ -1,4 +1,4 @@
-package com.insspring.poifox.initial
+package com.insspring.poifox.user
 
 import android.graphics.Color
 import android.os.Bundle
@@ -7,16 +7,16 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
-import com.delivery.ui.base.BaseMvpActivity
 import com.insspring.poifox.R
+import com.insspring.poifox.ui.base.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
-class InitialActivity : BaseMvpActivity(), InitialView {
+class UserActivity : BaseMvpActivity(), UserView {
 
     @InjectPresenter
-    lateinit var initialPresenter: InitialPresenter
+    lateinit var initialPresenter: UserPresenter
 
-    override fun getLayoutId(): Int = R.layout.activity_initial
+    override fun getLayoutId(): Int = R.layout.activity_user
 
     override fun onCreateActivity(savedInstanceState: Bundle?) {}
 
