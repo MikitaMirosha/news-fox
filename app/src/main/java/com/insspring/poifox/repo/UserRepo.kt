@@ -7,11 +7,9 @@ open class UserRepo {
 
     private val userStorage = UserStorage()
 
-    fun getUserStorage() = userStorage.getUserStorage()
-
     fun getUser(): UserModel? = userStorage.getUser()
 
-    fun isUserLoggedIn(username: String, password: String): Boolean =
+    fun isUserInStorage(username: String, password: String): Boolean =
         userStorage.isUserInStorage(username, password)
 
     fun getAllUsers(): MutableList<UserModel> = userStorage.getAllUsers()

@@ -3,22 +3,22 @@
     package="com.insspring.poifox">
 
     <application
-        android:name=".myapp.MyApp"
+        android:name=".MyApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_fox"
-        android:label="@string/app_name"
+        android:label="@string/poifox"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity
-            android:name=".user.UserActivity"
+            android:name="com.insspring.poifox.ui.user.UserActivity"
             android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".login.LoginActivity"
+            android:name="com.insspring.poifox.ui.login.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

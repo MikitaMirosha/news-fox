@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">Poifox</string>
-
-    <string name="poifox">POIfox</string>
+    <string name="poifox">Poifox</string>
     <string name="description">Find the best places in town</string>
 
     <string name="login">Log in </string>
@@ -13,8 +11,12 @@
     <string name="confirm_password">Confirm password</string>
 
     <string name="keep_me_logged_in">Keep me logged in</string>
-    <string name="forgot_password">Forgot password?</string>
-    <string name="recover_here">Recover here</string>
+    <string name="recover_password">Forgot password? Recover here</string>
 
     <string name="hello">Hello</string>
+
+    <string name="fill_in">fill in all fields</string>
+    <string name="different_passwords">passwords are different</string>
+    <string name="no_user">this user doesn\'t exist</string>
+    <string name="signing_up_error">signing up error</string>
 </resources>

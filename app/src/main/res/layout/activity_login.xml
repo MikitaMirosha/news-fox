@@ -21,14 +21,19 @@
 
         <TextView
             android:id="@+id/vTvTitleNameLogin"
-            style="@style/TextView.TitleName"
+            style="@style/TextView.TitleText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dp_16"
+            android:text="@string/poifox" />
 
         <TextView
-            style="@style/TextView.Description"
+            style="@style/TextView.SmallText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:text="@string/description" />
 
         <View style="@style/Divider" />
 
@@ -40,20 +45,28 @@
 
             <TextView
                 android:id="@+id/vTvLogin"
-                style="@style/TextView.Login"
+                style="@style/TextView.SmallText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/login"
+                android:textColor="@color/colorOrange" />
 
             <TextView
-                style="@style/TextView.Or"
+                style="@style/TextView.SmallText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:text="@string/or"
+                android:textColor="@color/colorGray" />
 
             <TextView
                 android:id="@+id/vTvSignUp"
-                style="@style/TextView.Signup"
+                style="@style/TextView.SmallText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_6"
+                android:text="@string/signup"
+                android:textColor="@color/colorWhite" />
 
         </LinearLayout>
 
@@ -122,9 +135,11 @@
             android:orientation="horizontal">
 
             <TextView
-                style="@style/TextView.KeepMeLoggedIn"
+                style="@style/TextView.SmallText"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/keep_me_logged_in"
+                android:textColor="@color/colorGray" />
 
             <ImageView
                 android:id="@+id/vIvKeepLogIn"
@@ -165,7 +180,7 @@
             android:visibility="gone">
 
             <TextView
-                style="@style/TextView.SignupButton"
+                style="@style/TextView.MiddleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -173,24 +188,12 @@
 
         </FrameLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/vTvRecoverPassword"
+            style="@style/TextView.SmallText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/TextView.ForgotPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/vTvRecoverPass"
-                style="@style/TextView.RecoverHere"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+            android:text="@string/recover_password" />
 
     </LinearLayout>
 

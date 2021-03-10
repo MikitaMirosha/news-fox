@@ -1,4 +1,4 @@
-package com.insspring.poifox.myapp
+package com.insspring.poifox
 
 import android.app.Application
 import io.realm.Realm
@@ -10,14 +10,10 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         initRealm()
-        configRealm()
     }
 
     private fun initRealm() {
         Realm.init(this@MyApp)
-    }
-
-    private fun configRealm() {
         val realmConfiguration = RealmConfiguration.Builder()
             .rxFactory(RealmObservableFactory(false))
             .deleteRealmIfMigrationNeeded()
@@ -26,4 +22,5 @@ class MyApp : Application() {
 
         Realm.setDefaultConfiguration(realmConfiguration)
     }
+
 }

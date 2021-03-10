@@ -1,4 +1,4 @@
-package com.insspring.poifox.login
+package com.insspring.poifox.ui.login
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,10 +12,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.bumptech.glide.Glide
 import com.insspring.poifox.R.*
 import com.insspring.poifox.ui.base.BaseMvpActivity
-import com.insspring.poifox.user.UserActivity
+import com.insspring.poifox.ui.user.UserActivity
 import com.insspring.poifox.utils.extensions.hide
 import com.insspring.poifox.utils.extensions.show
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_user.*
 import java.util.*
 
 class LoginActivity : BaseMvpActivity(), LoginView {
@@ -40,10 +41,18 @@ class LoginActivity : BaseMvpActivity(), LoginView {
             loginPresenter.onvIvKeepMeLoggedInClicked()
         }
         vFlLogIn.setOnClickListener {
-            loginPresenter.onvFlLoginClicked()
+            loginPresenter.onvFlLoginClicked(
+                vEtUsername.text.toString(),
+                vEtPassword.text.toString()
+            )
         }
         vFlSignUp.setOnClickListener {
-            loginPresenter.onvFlSignupClicked()
+            loginPresenter.onvFlSignupClicked(
+                0,
+                vEtUsername.text.toString(),
+                vEtPassword.text.toString(),
+                vEtConfirmPassword.text.toString()
+            )
         }
     }
 
@@ -68,7 +77,7 @@ class LoginActivity : BaseMvpActivity(), LoginView {
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
         spannable.setSpan(
-            ForegroundColorSpan(Color.parseColor("#EB874B")),
+            ForegroundColorSpan(ContextCompat.getColor(this, color.colorOrange)),
             3,
             6,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -76,16 +85,35 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         vTvTitleNameLogin.text = spannable
     }
 
+    override fun updateRecoverPassword() {
+        val spannable = SpannableString(getString(string.recover_password))
+        spannable.setSpan(
+            ForegroundColorSpan(ContextCompat.getColor(this, color.colorGray)),
+            0,
+            16,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannable.setSpan(
+            ForegroundColorSpan(Color.WHITE),
+            17,
+            27,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        vTvRecoverPassword.text = spannable
+    }
+
     override fun openUserActivity() =
         startActivity(Intent(this@LoginActivity, UserActivity::class.java))
 
-    override fun showInvalidMessage() = showMessage("invalid data")
+    override fun showFillFieldsMessage() = showMessage(resources.getString(string.fill_in))
 
-    override fun showSuccessMessage() = showMessage("success")
+    override fun showDifferentPasswordsMessage() =
+        showMessage(resources.getString(string.different_passwords))
 
-    override fun showFillFieldsMessage() = showMessage("fill in all fields")
+    override fun showNoUserMessage() = showMessage(resources.getString(string.no_user))
 
-    override fun showDifferentPasswordsMessage() = showMessage("passwords are different")
+    override fun showSignUpErrorMessage() =
+        showMessage(resources.getString(string.signing_up_error))
 
     override fun enableLoginFields() {
         vTvLogin.setTextColor(ContextCompat.getColor(this, color.colorOrange))
@@ -115,18 +143,6 @@ class LoginActivity : BaseMvpActivity(), LoginView {
         } else {
             vIvKeepLogIn.setBackgroundResource(drawable.ic_uncheck)
         }
-    }
-
-    override fun loginUserAccount() =
-        loginPresenter.loginUser(vEtUsername.text.toString(), vEtPassword.text.toString())
-
-    override fun signupUserAccount() {
-        loginPresenter.signupUser(
-            0,
-            vEtUsername.text.toString(),
-            vEtPassword.text.toString(),
-            vEtConfirmPassword.text.toString()
-        )
     }
 
 }

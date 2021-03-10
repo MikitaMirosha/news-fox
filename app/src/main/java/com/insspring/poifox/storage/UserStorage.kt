@@ -8,8 +8,6 @@ import io.realm.kotlin.where
 
 class UserStorage {
 
-    fun getUserStorage(): Realm = Realm.getDefaultInstance()
-
     fun getUser(): UserModel? {
         Realm.getDefaultInstance().use {
             return it.where(UserModel::class.java).findFirst()
@@ -17,7 +15,7 @@ class UserStorage {
     }
 
     fun isUserInStorage(username: String, password: String): Boolean {
-        val user: UserModel? = getUserStorage().where(UserModel::class.java)
+        val user: UserModel? = Realm.getDefaultInstance().where(UserModel::class.java)
             ?.equalTo("username", username)
             ?.equalTo("password", password)
             ?.findFirst()
@@ -32,7 +30,7 @@ class UserStorage {
     }
 
     fun saveUser(user: UserModel) {
-        getUserStorage().execute {
+        Realm.getDefaultInstance().execute {
             it.insertOrUpdate(user)
         }
     }

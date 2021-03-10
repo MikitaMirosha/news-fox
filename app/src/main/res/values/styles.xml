@@ -13,112 +13,44 @@
     </style>
 
     <style name="EditTextLayout" parent="android:Widget.EditText">
-        <item name="android:textColor">#FFFFFF</item>
         <item name="android:layout_marginStart">@dimen/dp_16</item>
         <item name="android:layout_marginEnd">@dimen/dp_16</item>
         <item name="android:layout_marginBottom">@dimen/dp_16</item>
         <item name="android:background">@drawable/ic_rec_rounded_12</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:drawablePadding">@dimen/dp_16</item>
         <item name="android:paddingStart">@dimen/dp_16</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="EditText" parent="android:Widget.EditText">
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:padding">16dp</item>
-        <item name="android:layout_marginStart">@dimen/dp_16</item>
-        <item name="android:layout_marginEnd">@dimen/dp_16</item>
-        <item name="android:layout_marginBottom">@dimen/dp_16</item>
-        <item name="android:background">@drawable/ic_rec_rounded_12</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:drawablePadding">@dimen/dp_16</item>
-        <item name="android:paddingStart">@dimen/dp_16</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ptsans</item>
+        <item name="android:background">@drawable/ic_rec_rounded_12</item>
+        <item name="android:paddingStart">16dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_margin">@dimen/dp_4</item>
     </style>
 
     <style name="TextView" />
 
-    <style name="TextView.TitleName">
+    <style name="TextView.TitleText">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">34sp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ptsans</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:paddingTop">@dimen/dp_16</item>
-        <item name="android:text">@string/poifox</item>
     </style>
 
-    <style name="TextView.Description">
-        <item name="android:textStyle">normal</item>
+    <style name="TextView.MiddleText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:fontFamily">@font/ptsans</item>
+    </style>
+
+    <style name="TextView.SmallText">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:fontFamily">@font/ptsans</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:layout_marginTop">@dimen/dp_16</item>
-        <item name="android:layout_marginBottom">@dimen/dp_16</item>
-        <item name="android:text">@string/description</item>
-    </style>
-
-    <style name="TextView.Login">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorOrange</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:text">@string/login</item>
-    </style>
-
-    <style name="TextView.Or">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorGray</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:layout_marginStart">@dimen/dp_6</item>
-        <item name="android:text">@string/or</item>
-    </style>
-
-    <style name="TextView.Signup">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:layout_marginStart">@dimen/dp_6</item>
-        <item name="android:text">@string/signup</item>
-    </style>
-
-    <style name="TextView.SignupButton">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:layout_marginStart">@dimen/dp_6</item>
-    </style>
-
-    <style name="TextView.KeepMeLoggedIn">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorGray</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:text">@string/keep_me_logged_in</item>
-    </style>
-
-    <style name="TextView.ForgotPassword">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorGray</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:text">@string/forgot_password</item>
-    </style>
-
-    <style name="TextView.RecoverHere">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorWhite</item>
-        <item name="android:fontFamily">@font/ptsans</item>
-        <item name="android:layout_marginStart">@dimen/dp_8</item>
-        <item name="android:text">@string/recover_here</item>
     </style>
 
 </resources>

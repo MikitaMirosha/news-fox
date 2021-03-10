@@ -1,4 +1,4 @@
-package com.insspring.poifox.login
+package com.insspring.poifox.ui.login
 
 import com.arellomobile.mvp.InjectViewState
 import com.insspring.poifox.repo.UserRepo
@@ -14,18 +14,22 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
         viewState.updateTitleName()
     }
 
-    fun loginUser(username: String, password: String) {
+    private fun loginUser(username: String, password: String) {
         if (username.isEmpty() || password.isEmpty()) {
             viewState.showFillFieldsMessage()
-        } else if (userRepo.isUserLoggedIn(username, password)) {
+        } else if (userRepo.isUserInStorage(username, password)) {
             viewState.openUserActivity()
-            viewState.showSuccessMessage()
         } else {
-            viewState.showInvalidMessage()
+            viewState.showNoUserMessage()
         }
     }
 
-    fun signupUser(id: Int, username: String, password: String, passwordConfirmation: String) {
+    private fun signupUser(
+        id: Int,
+        username: String,
+        password: String,
+        passwordConfirmation: String
+    ) {
         if (username.isEmpty() ||
             password.isEmpty() ||
             passwordConfirmation.isEmpty()
@@ -33,11 +37,10 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
             viewState.showFillFieldsMessage()
         } else if (password != passwordConfirmation) {
             viewState.showDifferentPasswordsMessage()
-        } else if (userRepo.isUserLoggedIn(username, password)) {
-            viewState.showInvalidMessage()
+        } else if (userRepo.isUserInStorage(username, password)) {
+            viewState.showSignUpErrorMessage()
         } else {
             userRepo.saveUser(id, username, password)
-            viewState.showSuccessMessage()
         }
     }
 
@@ -47,9 +50,14 @@ class LoginPresenter : BaseMvpPresenter<LoginView>() {
 
     fun onvIvKeepMeLoggedInClicked() = viewState.keepMeLoggedIn()
 
-    fun onvFlLoginClicked() = viewState.loginUserAccount()
+    fun onvFlLoginClicked(username: String, password: String) = loginUser(username, password)
 
-    fun onvFlSignupClicked() = viewState.signupUserAccount()
+    fun onvFlSignupClicked(
+        id: Int,
+        username: String,
+        password: String,
+        passwordConfirmation: String
+    ) = signupUser(id, username, password, passwordConfirmation)
 
 }
 
